@@ -2,7 +2,7 @@ package bsu.rfe.java.group8.lab1.Kalitin.varA11;
 
 public class Potato extends Food {
    String type=null;
-    public Potato(String size)
+    public Potato(String type)
     {
         super("Potato");
         this.type = type;
