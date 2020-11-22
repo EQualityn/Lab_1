@@ -1,30 +1,42 @@
 package bsu.rfe.java.group8.lab1.Kalitin.varA11;
 
-public class Potato extends Food {
-   String type=null;
+public class Potato extends Food{
     public Potato(String type)
     {
-        super("Potato");
+        super("Картофель");
         this.type = type;
     }
-
-    public Potato() {
-        super("Potato");
-    }
-    @Override
-    public boolean equals(Object potato) {
-        if (super.getName().equals(((String[])potato)[0])){      // является ли аргумент arg0 экземпляром класса Food
-            if(((String[])potato).length == 2)
-            {
-                return this.type.equals(((String[])potato)[1]);
-            }
-            return true;
-        }
-        return  false;
-
-    }
-    @Override
     public void consume() {
-        System.out.println(this + " съедено");
+        System.out.println(this.name+ " " +this.type + " Калорийности " + calculatecalories() + " съедено");
     }
+    public String gettype() {
+        return type;
+    }
+
+    public int calculatecalories()
+    {
+       if (type.equals("fries"))
+       {
+           calories=150;
+       }else
+        if (type.equals("roasted"))
+        {
+            calories=120;
+        }else
+        if (type.equals("boiled"))
+        {
+            calories=70;
+        }else return 0;
+       return calories;
+    }
+    public boolean equals(Object arg0) {
+        if (super.equals(arg0))
+        { // Шаг 1
+            if (!(arg0 instanceof Potato)) return false; // Шаг 2
+            return type.equals(((Potato)arg0).type); // Шаг 3
+        }
+        else
+            return false;
+    }
+
 }
